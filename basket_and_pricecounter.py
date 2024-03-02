@@ -21,10 +21,16 @@ class NewFood:
     food.name = name
     food.price = price
 
-def draw(basket, t):
+def drawA(basket, t):
     screen.fill(("white"))
     pygame.draw.rect(screen, "brown", basket)
-    pygame.draw.rect(screen, "red", t)
+    for i in t :
+        pygame.draw.rect(screen, "red", i.item)
+    pygame.display.update()
+
+def draw(basket):
+    screen.fill(("white"))
+    pygame.draw.rect(screen, "brown", basket)
     pygame.display.update()
 
 def drawText(total) :
@@ -44,11 +50,48 @@ def main() :
     t1 = NewFood(tomato1, "tomato", 1.00)
     t2 = NewFood(tomato2, "tomato", 1.00)
 
-    l = [t, t1, t2]
+    l = [t]
 
     total = "0.0"
     totalInt = 0
-    while RUNNING: 
+    # while RUNNING: 
+    #     frames.tick(60)
+    #     for event in pygame.event.get():
+    #         if event.type == pygame.QUIT:
+    #             RUNNING = False
+    #             break
+
+    #     keys = pygame.key.get_pressed()
+
+    #     if not l :
+    #         continue
+    #     elif keys[pygame.K_d] and t.item.x + 20 <= SCREEN_WIDTH :
+    #         t.item.x += 5
+    #     elif keys[pygame.K_a] and SCREEN_WIDTH - t.item.x >= 0:
+    #         t.item.x -= 5
+
+    #     tomatoes_to_remove = []
+    #     for t in l[:] :
+    #         if t.item.x + 20 >= foodBasket.x and t.item.colliderect(foodBasket):
+    #             totalInt += t.price
+    #             total = str(totalInt)
+    #             tomatoes_to_remove.append(t)
+
+    #     draw(total)
+
+    #     for i in tomatoes_to_remove :
+    #         remove(i);
+            
+    #     if not l :
+    #         draw(foodBasket)
+    #     else :
+    #         drawA(foodBasket, tomato)
+    # pygame.quit()
+
+    total = "0.0"
+    totalInt = 0
+
+    while RUNNING:
         frames.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -57,19 +100,28 @@ def main() :
 
         keys = pygame.key.get_pressed()
 
-        draw(foodBasket, tomato)
+        if not l:
+            continue
+        elif keys[pygame.K_d] and t.item.x + 20 <= SCREEN_WIDTH:
+            t.item.x += 5
+        elif keys[pygame.K_a] and SCREEN_WIDTH - t.item.x >= 0:
+            t.item.x -= 5
 
-        for t in l[:] :
-            if keys[pygame.K_d] and t.item.x + 20 <= SCREEN_WIDTH :
-                t.item.x += 5
-            elif keys[pygame.K_a] and SCREEN_WIDTH - t.item.x >= 0:
-                t.item.x -= 5
-        
-            if t.item.x + 20 >= foodBasket.x and t.item.colliderect(foodBasket):
-                totalInt += t.price
+        tomatoes_to_remove = []
+        for t_item in l[:]:
+            if t_item.item.x + 20 >= foodBasket.x and t_item.item.colliderect(foodBasket):
+                totalInt += t_item.price
                 total = str(totalInt)
-                del t
-            
+                tomatoes_to_remove.append(t_item)
+
+        for t_item in tomatoes_to_remove:
+            l.remove(t_item)
+
+        if not l:
+            draw(foodBasket)
+        else:
+            drawA(foodBasket, l)
+
         drawText(total)
 
     pygame.quit()
