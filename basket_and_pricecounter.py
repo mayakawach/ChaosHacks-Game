@@ -21,21 +21,22 @@ class NewFood:
     food.name = name
     food.price = price
 
-def drawA(basket, t):
+def drawText(total) :
+    text = font.render(total, True, (0, 0, 0))
+    screen.blit(text, (100, 100))
+
+def drawA(basket, t, total):
     screen.fill(("white"))
     pygame.draw.rect(screen, "brown", basket)
+    drawText(total)
     for i in t :
         pygame.draw.rect(screen, "red", i.item)
     pygame.display.update()
 
-def draw(basket):
+def draw(basket, total):
     screen.fill(("white"))
     pygame.draw.rect(screen, "brown", basket)
-    pygame.display.update()
-
-def drawText(total) :
-    text = font.render(total, True, (0, 0, 0))
-    screen.blit(text, (100, 100))
+    drawText(total)
     pygame.display.update()
 
 def main() :
@@ -51,43 +52,6 @@ def main() :
     t2 = NewFood(tomato2, "tomato", 1.00)
 
     l = [t]
-
-    total = "0.0"
-    totalInt = 0
-    # while RUNNING: 
-    #     frames.tick(60)
-    #     for event in pygame.event.get():
-    #         if event.type == pygame.QUIT:
-    #             RUNNING = False
-    #             break
-
-    #     keys = pygame.key.get_pressed()
-
-    #     if not l :
-    #         continue
-    #     elif keys[pygame.K_d] and t.item.x + 20 <= SCREEN_WIDTH :
-    #         t.item.x += 5
-    #     elif keys[pygame.K_a] and SCREEN_WIDTH - t.item.x >= 0:
-    #         t.item.x -= 5
-
-    #     tomatoes_to_remove = []
-    #     for t in l[:] :
-    #         if t.item.x + 20 >= foodBasket.x and t.item.colliderect(foodBasket):
-    #             totalInt += t.price
-    #             total = str(totalInt)
-    #             tomatoes_to_remove.append(t)
-
-    #     draw(total)
-
-    #     for i in tomatoes_to_remove :
-    #         remove(i);
-            
-    #     if not l :
-    #         draw(foodBasket)
-    #     else :
-    #         drawA(foodBasket, tomato)
-    # pygame.quit()
-
     total = "0.0"
     totalInt = 0
 
@@ -118,9 +82,9 @@ def main() :
             l.remove(t_item)
 
         if not l:
-            draw(foodBasket)
+            draw(foodBasket, total)
         else:
-            drawA(foodBasket, l)
+            drawA(foodBasket, l, total)
 
         drawText(total)
 
