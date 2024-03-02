@@ -31,7 +31,7 @@ while RUNNING:
             break
         
         if event.type == pygame.KEYDOWN:
-            RUNNING = False
+            current_state = State.GAME
     draw()
 
 pygame.quit()
