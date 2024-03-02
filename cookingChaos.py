@@ -1,24 +1,41 @@
 import pygame
+import Enum
+import time
+import food
+import gameLogic
+import setup
 
-pygame.init()
+class State(Enum):
+    MAIN_MENU = 0
+    GAME = 1
+    
+current_state = State.MAIN_MENU
 
-SCREEN_WIDTH = 600
-SCREEN_HEIGHT = 200
-
-pygame.display.set_caption
-
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-running = True
 
 def draw():
-    screen.fill(("orange"))
+    # screen.fill(("red"))
+    bg.blit(setup.screen, (0,0))
+    
+    match(current_state):
+        case State.MAIN_MENU:
+            pygame.draw.rect(setup.screen, "blue", i)
+        case State.GAME:
+            gameLogic.drawFood(gameLogic.veg)
+    
     pygame.display.update()
+    
 
-while running: 
+
+frames = pygame.time.Clock()
+while RUNNING: 
+    frames.tick(60)
     for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            RUNNING = False
+            break
+        
         if event.type == pygame.KEYDOWN:
-            running = False
-
+            RUNNING = False
     draw()
 
 pygame.quit()
