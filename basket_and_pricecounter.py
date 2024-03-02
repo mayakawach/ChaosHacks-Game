@@ -23,7 +23,7 @@ class NewFood:
 
 def drawText(total) :
     text = font.render(total, True, (0, 0, 0))
-    screen.blit(text, (765, 550))
+    screen.blit(text, (735, 550))
 
 def drawA(basket, t, total):
     screen.fill(("white"))
@@ -42,7 +42,7 @@ def draw(basket, total):
 def main() :
     RUNNING = True
     frames = pygame.time.Clock()
-    foodBasket = pygame.Rect(SCREEN_WIDTH - BASKET_WIDTH, SCREEN_HEIGHT - BASKET_HEIGHT, BASKET_WIDTH, BASKET_HEIGHT)
+    foodBasket = pygame.Rect(725, SCREEN_HEIGHT - BASKET_HEIGHT, BASKET_WIDTH, BASKET_HEIGHT)
     tomato = pygame.Rect(100, SCREEN_HEIGHT - 20, 20, 20)
     tomato1 = pygame.Rect(100, SCREEN_HEIGHT - 20, 20, 20)
     tomato2 = pygame.Rect(100, SCREEN_HEIGHT - 20, 20, 20)
