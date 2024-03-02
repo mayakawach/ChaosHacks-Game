@@ -1,6 +1,5 @@
-import pygame
 from enum import Enum
-import time
+import pygame
 import gameLogic
 import setup
 
@@ -15,10 +14,18 @@ def draw():
     setup.bg.blit(setup.screen, (0,0))
     
     match(current_state):
+        
         case State.MAIN_MENU:
+            setup.screen.fill((0,0,0))
+            text = setup.font.render("MENU", True, (255, 255, 255))
+            setup.screen.blit(text, (100, 100))
             pygame.draw.rect(setup.screen, "blue", (50,50,50,50))
+            
         case State.GAME:
-            gameLogic.drawFood(gameLogic.veg)
+            setup.screen.fill((0,0,0))
+            text = setup.font.render("GAME", True, (255, 255, 255))
+            setup.screen.blit(text, (100, 100))
+            gameLogic.game()
     
     pygame.display.update()
     
@@ -31,7 +38,10 @@ while RUNNING:
             break
         
         if event.type == pygame.KEYDOWN:
-            current_state = State.GAME
+            if current_state == State.MAIN_MENU:
+                current_state = State.GAME
+            else:
+                current_state = State.MAIN_MENU
     draw()
 
 pygame.quit()
