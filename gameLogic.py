@@ -1,6 +1,10 @@
+import pygame
+import food
+import setup
+
 def drawFood(veg) :
     for i in veg :
-        pygame.draw.rect(screen, "red", i)
+        pygame.draw.rect(setup.screen, "red", i)
     pygame.display.update()
     
 # Initializing Vegtable List
