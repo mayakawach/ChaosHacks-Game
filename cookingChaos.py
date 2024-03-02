@@ -2,46 +2,33 @@ from enum import Enum
 import pygame
 import gameLogic
 import setup
-
-class State(Enum):
-    MAIN_MENU = 0
-    GAME = 1
-    
-current_state = State.MAIN_MENU
-RUNNING = True
+import states
+import buttonMenu
 
 def draw():
     setup.bg.blit(setup.screen, (0,0))
     
-    match(current_state):
+    match(states.current_state):
         
-        case State.MAIN_MENU:
-            setup.screen.fill((0,0,0))
-            text = setup.font.render("MENU", True, (255, 255, 255))
-            setup.screen.blit(text, (100, 100))
-            pygame.draw.rect(setup.screen, "blue", (50,50,50,50))
+        case states.State.MAIN_MENU:
+            buttonMenu.mainMenu()
             
-        case State.GAME:
-            setup.screen.fill((0,0,0))
-            text = setup.font.render("GAME", True, (255, 255, 255))
-            setup.screen.blit(text, (100, 100))
+        case states.State.GAME:
             gameLogic.game()
     
     pygame.display.update()
     
 frames = pygame.time.Clock()
-while RUNNING: 
+while states.RUNNING: 
     frames.tick(60)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            RUNNING = False
+            states.RUNNING = False
             break
         
         if event.type == pygame.KEYDOWN:
-            if current_state == State.MAIN_MENU:
-                current_state = State.GAME
-            else:
-                current_state = State.MAIN_MENU
+            if states.current_state == states.State.MAIN_MENU:
+                states.current_state = states.State.GAME
     draw()
 
 pygame.quit()
