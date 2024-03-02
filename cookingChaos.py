@@ -3,6 +3,7 @@ import pygame
 import gameLogic
 import setup
 import states
+import buttonMenu
 
 def draw():
     setup.bg.blit(setup.screen, (0,0))
@@ -10,10 +11,7 @@ def draw():
     match(states.current_state):
         
         case states.State.MAIN_MENU:
-            setup.screen.fill((0,0,0))
-            text = setup.font.render("MENU", True, (255, 255, 255))
-            setup.screen.blit(text, (100, 100))
-            pygame.draw.rect(setup.screen, "blue", (50,50,50,50))
+            buttonMenu.mainMenu()
             
         case states.State.GAME:
             gameLogic.game()
