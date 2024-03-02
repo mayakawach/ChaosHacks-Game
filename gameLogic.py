@@ -25,3 +25,4 @@ def drawGameTitle():
 def drawTimer() :
     text_rect = timer.text.get_rect(center = setup.screen.get_rect().center)
     setup.screen.blit(timer.text, text_rect)
+
