@@ -11,12 +11,12 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 running = True
 
 def draw():
-    screen.fill(("red"))
+    screen.fill(("orange"))
     pygame.display.update()
 
 while running: 
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.KEYDOWN:
             running = False
 
     draw()
