@@ -1,6 +1,14 @@
+from enum import Enum
 import pygame
 
 pygame.init()
+
+class State(Enum):
+    MAIN_MENU = 0
+    GAME = 1
+    
+current_state = State.MAIN_MENU
+RUNNING = True
 
 clock = pygame.time
 # Set-up
