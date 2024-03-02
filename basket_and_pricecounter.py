@@ -12,7 +12,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 # constants
 BASKET_HEIGHT = 30
 BASKET_WIDTH = 50
-font = pygame.font.Font(None, 36)
+font = pygame.font.Font(None, 25)
 
 
 class NewFood:
@@ -23,7 +23,7 @@ class NewFood:
 
 def drawText(total) :
     text = font.render(total, True, (0, 0, 0))
-    screen.blit(text, (100, 100))
+    screen.blit(text, (765, 550))
 
 def drawA(basket, t, total):
     screen.fill(("white"))
@@ -90,6 +90,5 @@ def main() :
 
     pygame.quit()
 
-if __name__ == "__main__" :
-    
+if __name__ == "__main__" :  
     main()
