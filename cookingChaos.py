@@ -7,7 +7,7 @@ SCREEN_HEIGHT = 200
 
 pygame.display.set_caption
 
-screen = pygame.display.set_mode((CONST_WIDTH, CONST_HEIGHT))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 running = True
 
 def draw():
