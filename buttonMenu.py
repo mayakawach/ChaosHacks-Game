@@ -7,7 +7,7 @@ import sys
 pygame.init()
 screen = pygame.display.set_mode((800,800))
 pygame.display.set_caption("button")
-main_font = pygame.font.SysFont("cambria", 50)
+main_font = pygame.font.SysFont("comfortaa", 50)
 #first need button class 
 class Button ():
     def __init__(self, image, x_pos, y_pos, text_input ): #initializing button
@@ -15,26 +15,26 @@ class Button ():
         self.x_pos = x_pos
         self.y_pos = y_pos
         #^corrdinates of where want the button
-        self.rect = self.image.get_rect(center=(self.x_pos,self.y_pos)) #check for input later
+        self.rect = self.image.get_rect(center=(self.x_pos,self.y_pos)) #check for input later, it is set to size of button
         self.text_input = text_input #storing text
         self.text = main_font.render(self.text_input, True, "white")
         self.text_react = self.text.get_rect(center=(self.x_pos, self.y_pos)) #check text input
 
-    def update(self): 
-        screen.blit(self.image, self.react)
+    def update(self): #blit puts image on screen
+        screen.blit(self.image, self.rect) 
         screen.blit(self.text,self.text_react)
     
-    def checkForInput(self, position):
+    def checkForInput(self, position): #check is where mouse position is 
         if position[0] in range (self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
             print ("button press!")                                            
     def changeColor(self,position):
         if position[0] in range (self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
-            self.text= main_font.render(self.text_input, True, "green")
+            self.text= main_font.render(self.text_input, True, "green") #if hovering over 
         else:
             self.text = main_font.render(self.text_input, True, "white")
 
 button_surface = pygame.image.load("button.png")
-button_surface = pygame. transformers.scale(button_surface, (400,150))
+button_surface = pygame. transform.scale(button_surface, (400,150))
 
 button = Button(button_surface, 400, 300, "click me")
 
@@ -55,6 +55,18 @@ while True:
          
     #in main menu now, can make seperate buttons using the class above 
 
-    #play_button = Button()
-    #quit_button = Button()
+    #PLAY_BUTTON = Button(image=pygame.image.load("assests/Play Rect.png"), pos=(640,250)
+    #QUIT_BUTTON = Button(image=pygame.image.load("assests/Quit Rect.png"), pos=(640,400)
 
+    #quit something else
+
+    #play function 
+    '''def play ():
+        pygame.display.set_caption("play")
+    while True:
+        PLAY_MOUSE_POS = pygame.mouse.get_pos()
+        SCREEN.fill("black")
+
+        PLAY_TEXT
+        PLAY_RECT
+        SCREEN.blitt'''
