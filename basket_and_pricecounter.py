@@ -70,6 +70,10 @@ def main() :
             t.item.x += 5
         elif keys[pygame.K_a] and SCREEN_WIDTH - t.item.x >= 0:
             t.item.x -= 5
+        elif keys[pygame.K_w]:
+            t.item.y -= 5
+        elif keys[pygame.K_s]:
+            t.item.y += 5
 
         tomatoes_to_remove = []
         for t_item in l[:]:
