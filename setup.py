@@ -4,8 +4,8 @@ pygame.init()
 
 clock = pygame.time
 # Set-up
-SCREEN_WIDTH = 600
-SCREEN_HEIGHT = 300
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
 
 pygame.display.set_caption("Cooking Chaos")
 

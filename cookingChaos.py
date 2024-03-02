@@ -22,9 +22,6 @@ def draw():
             pygame.draw.rect(setup.screen, "blue", (50,50,50,50))
             
         case State.GAME:
-            setup.screen.fill((0,0,0))
-            text = setup.font.render("GAME", True, (255, 255, 255))
-            setup.screen.blit(text, (100, 100))
             gameLogic.game()
     
     pygame.display.update()
@@ -40,8 +37,6 @@ while RUNNING:
         if event.type == pygame.KEYDOWN:
             if current_state == State.MAIN_MENU:
                 current_state = State.GAME
-            else:
-                current_state = State.MAIN_MENU
     draw()
 
 pygame.quit()
