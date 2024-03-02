@@ -1,3 +1,3 @@
 # ChaosHacks-Game
 
-Our ChaosHacks Project :)
+Our ChaosHacks Project :) :)
