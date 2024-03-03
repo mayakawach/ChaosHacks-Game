@@ -15,7 +15,7 @@ def draw():
             buttonMenu.mainMenu()
             
         case states.State.GAME:
-            dragableSquare.game()
+            gameLogic.game()
     
     pygame.display.update()
     
