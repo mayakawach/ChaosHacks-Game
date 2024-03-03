@@ -23,7 +23,7 @@ def drawGameTitle():
     setup.screen.fill((0,0,0))
     text = setup.font.render("COOKING CHAOS", True, (255, 255, 255))
     setup.screen.blit(text, (290, 25))
-    
+
 def handleInput(event):
     global dragging, offset_x, offset_y
 
