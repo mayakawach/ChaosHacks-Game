@@ -18,9 +18,15 @@ for i in range(num_vegetables):
 
 sky_image = pygame.image.load("images/sky.jpg")
 sky_image = pygame.transform.scale(sky_image, (setup.SCREEN_WIDTH, setup.SCREEN_HEIGHT))
+sky_image2 = pygame.image.load("images/sky2.jpg")
+sky_image2 = pygame.transform.scale(sky_image2, (setup.SCREEN_WIDTH, setup.SCREEN_HEIGHT))
 
 def game():
-    setup.screen.blit(sky_image, (0, 0))  # Draw the sky image
+    if timer.counter > 10:
+        setup.screen.blit(sky_image, (0, 0))  # Draw the sky image
+    else:
+        setup.screen.blit(sky_image2, (0, 0))  # Draw the sky image
+    
     drawTimer()
     drawGameTitle()
     drawFood(vegetables)
@@ -28,7 +34,10 @@ def game():
     pygame.display.update()
     
 def drawGameTitle():
-    text = setup.font.render("COOKING CHAOS", True, (0, 0, 0))
+    if timer.counter > 10:
+        text = setup.font.render("COOKING CHAOS", True, (0, 0, 0))
+    else:
+        text = setup.font.render("COOKING CHAOS", True, (255, 255, 255))
     setup.screen.blit(text, (290, 25))
 
 def drawTimer() :
@@ -47,7 +56,7 @@ def drawFood(veg):
 def basket() :
     global totalMoney, totalString
 
-    foodBasket = pygame.Rect(700, 510, 150, 150)
+    foodBasket = pygame.Rect(650, 460, 150, 150)
 
     tomatoes_to_remove = []
     for veg in vegetables[:]:
@@ -62,9 +71,18 @@ def basket() :
     drawBasket(foodBasket, totalString)
 
 def drawBasket(basket, totalString):
-    pygame.draw.rect(setup.screen, "brown", basket)
+    # Load the basket image
+    basket_image = pygame.image.load("images/basket.png")
+    
+    # Resize the basket image to match the dimensions of the basket rect
+    basket_image = pygame.transform.scale(basket_image, (basket.width, basket.height))
+    
+    # Blit the basket image onto the screen at the position of the basket rect
+    setup.screen.blit(basket_image, (basket.x, basket.y))
+    
+    # Draw the total string
     text = setup.font.render(totalString, True, (255, 255, 255))
-    setup.screen.blit(text, (735, 550))
+    setup.screen.blit(text, (710, 540))
 
 def handleInput(event):
     global dragging, offset_x, offset_y, dragged_vegetable
