@@ -2,8 +2,6 @@ import pygame
 import food
 import setup
 
-import random
-
 totalMoney = 0
 totalString = ""
 
@@ -26,11 +24,33 @@ def game():
 def drawFood(veg):
     for i in veg:
         pygame.draw.rect(setup.screen, "red", i.shape)
-    
+
 def drawGameTitle():
     setup.screen.fill((0,0,0))
     text = setup.font.render("COOKING CHAOS", True, (255, 255, 255))
     setup.screen.blit(text, (290, 25))
+
+def basket() :
+    global totalMoney, totalString
+
+    foodBasket = pygame.Rect(700, 510, 150, 150)
+
+    tomatoes_to_remove = []
+    for veg in vegetables[:]:
+        if veg.shape.x + 20 >= foodBasket.x and veg.shape.colliderect(foodBasket):
+            totalMoney += veg.price
+            totalString = str(totalMoney)
+            tomatoes_to_remove.append(veg)
+
+    for veg in tomatoes_to_remove:
+        vegetables.remove(veg)
+
+    drawBasket(foodBasket, totalString)
+
+def drawBasket(basket, totalString):
+    pygame.draw.rect(setup.screen, "brown", basket)
+    text = setup.font.render(totalString, True, (255, 255, 255))
+    setup.screen.blit(text, (735, 550))
 
 def handleInput(event):
     global dragging, offset_x, offset_y, dragged_vegetable
@@ -52,28 +72,3 @@ def handleInput(event):
         if event.button == 1:
             dragging = False
             dragged_vegetable = None
-            
-def basket() :
-    global totalMoney, totalString
-    
-    foodBasket = pygame.Rect(700, 510, 150, 150)
-    
-    tomatoes_to_remove = []
-    for veg in vegetables[:]:
-        if veg.shape.x + 20 >= foodBasket.x and veg.shape.colliderect(foodBasket):
-            totalMoney += veg.price
-            totalString = str(totalMoney)
-            tomatoes_to_remove.append(veg)
-
-    for veg in tomatoes_to_remove:
-        vegetables.remove(veg)
-
-    draw(foodBasket, totalString)
-    
-def draw(basket, totalString):
-    pygame.draw.rect(setup.screen, "brown", basket)
-    drawText(totalString)
-    
-def drawText(totalString) :
-    text = setup.font.render(totalString, True, (255, 255, 255))
-    setup.screen.blit(text, (735, 550))

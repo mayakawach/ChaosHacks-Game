@@ -18,14 +18,11 @@ def game():
     drawTimer()
     drawFood(veg)
     
-def drawBG() :
-    bg.blit(win, (0,0))
 
 def drawFood(veg):
     for i in veg:
         pygame.draw.rect(setup.screen, "red", i)
-    
-    
+
 def drawGameTitle():
     setup.screen.fill((0,0,0))
     text = setup.font.render("COOKING CHAOS", True, (255, 255, 255))
@@ -34,5 +31,5 @@ def drawGameTitle():
 def drawTimer() :
     text_rect = timer.text.get_rect(center = setup.screen.get_rect().center)
     setup.screen.blit(timer.text, text_rect)
-    pygame.display.update()
+
 
