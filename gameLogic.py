@@ -23,12 +23,9 @@ def game():
     drawTimer()
     pygame.display.update()
     
-<<<<<<< HEAD
-=======
 def drawGameTitle():
     text = setup.font.render("COOKING CHAOS", True, (255, 255, 255))
     setup.screen.blit(text, (290, 25))
->>>>>>> 2304893db4a2e7d03818cdc48467d695687112a2
 
 def drawTimer() :
     text_rect = timer.text.get_rect(center = setup.screen.get_rect().center)
