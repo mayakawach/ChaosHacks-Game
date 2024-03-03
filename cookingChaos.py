@@ -28,8 +28,7 @@ while states.RUNNING:
             break
         elif event.type == gameLogic.timer.timer_event and states.current_state == states.State.GAME:
             gameLogic.timer.counter -= 1
-            
-            gameLogic.timer.text = gameLogic.timer.font.render(str(gameLogic.timer.counter), True, (0, 128, 0))
+            gameLogic.timer.text = gameLogic.timer.font.render(str(gameLogic.timer.counter), True, ("red"))
             if gameLogic.timer.counter == 0:
                 states.RUNNING = False
 
