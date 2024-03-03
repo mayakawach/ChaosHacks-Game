@@ -13,7 +13,6 @@ def game():
     drawTimer()
     drawFood(veg)
     pygame.display.update()
-    
 
 def drawFood(veg):
     for i in veg:
