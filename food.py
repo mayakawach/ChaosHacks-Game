@@ -30,6 +30,6 @@ def create_vegetable(index):
     x = random.randint(100, 700)  # Adjust the range based on your screen dimensions
     y = random.randint(100, 500)
     vegetable_name = vegetable_types[index % len(vegetable_types)]
-    vegetable_rect = pygame.Rect(x, y, 20, 20)
+    vegetable_rect = pygame.Rect(x, y, 30, 30)
     vegetable = Food(vegetable_rect, vegetable_name, 1.00)
     return vegetable

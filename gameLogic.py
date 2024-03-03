@@ -9,27 +9,27 @@ totalString = ""
 dragging = False
 offset_x, offset_y = 0, 0
 
-num_vegetables = 20
+num_vegetables = 50
 vegetables = []
 
 for i in range(num_vegetables):
     new_vegetable = food.create_vegetable(i)
     vegetables.append(new_vegetable)
 
+sky_image = pygame.image.load("images/sky.jpg")
+sky_image = pygame.transform.scale(sky_image, (setup.SCREEN_WIDTH, setup.SCREEN_HEIGHT))
+
 def game():
-    setup.screen.fill((0,0,0))
+    setup.screen.blit(sky_image, (0, 0))  # Draw the sky image
     drawTimer()
     drawGameTitle()
     drawFood(vegetables)
     basket()
     pygame.display.update()
     
-<<<<<<< HEAD
-=======
 def drawGameTitle():
-    text = setup.font.render("COOKING CHAOS", True, (255, 255, 255))
+    text = setup.font.render("COOKING CHAOS", True, (0, 0, 0))
     setup.screen.blit(text, (290, 25))
->>>>>>> 2304893db4a2e7d03818cdc48467d695687112a2
 
 def drawTimer() :
     text_rect = timer.text.get_rect(center = setup.screen.get_rect().center)
@@ -37,6 +37,11 @@ def drawTimer() :
 
 def drawFood(veg):
     for i in veg:
+        background_circle_radius = max(i.shape.width, i.shape.height) // 2 + 5
+        background_circle_color = (0, 0, 0, 10)
+        background_circle_center = i.shape.center
+        pygame.draw.circle(setup.screen, background_circle_color, background_circle_center, background_circle_radius, 0)
+        
         setup.screen.blit(i.image, i.shape.topleft)
 
 def basket() :
