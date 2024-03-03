@@ -9,7 +9,7 @@ totalString = ""
 dragging = False
 offset_x, offset_y = 0, 0
 
-num_vegetables = 5
+num_vegetables = 20
 vegetables = []
 
 for i in range(num_vegetables):
@@ -17,10 +17,11 @@ for i in range(num_vegetables):
     vegetables.append(new_vegetable)
 
 def game():
+    setup.screen.fill((0,0,0))
+    drawTimer()
     drawGameTitle()
     drawFood(vegetables)
     basket()
-    drawTimer()
     pygame.display.update()
     
 def drawGameTitle():
@@ -33,7 +34,7 @@ def drawTimer() :
 
 def drawFood(veg):
     for i in veg:
-        pygame.draw.rect(setup.screen, "red", i.shape)
+        setup.screen.blit(i.image, i.shape.topleft)
 
 def basket() :
     global totalMoney, totalString
