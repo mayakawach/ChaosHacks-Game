@@ -11,13 +11,6 @@ t = food.Food(tomato, "tomato", 1.00)
 def game():
     drawGameTitle()
     drawTimer()
-    drawFood(veg)
-    
-
-def drawFood(veg):
-    for i in veg:
-        pygame.draw.rect(setup.screen, "red", i)
-    
     
 def drawGameTitle():
     setup.screen.fill((0,0,0))
