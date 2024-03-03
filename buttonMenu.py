@@ -43,9 +43,9 @@ def mainMenu():
     handleMenuInput()
             
 def handleMenuInput():
-    for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            button.checkForInput(pygame.mouse.get_pos())
+    mouse_pos = pygame.mouse.get_pos()
+    if pygame.mouse.get_pressed()[0]:  # Check for left mouse button down
+        button.checkForInput(mouse_pos)
 
 def drawGameTitle() :
     setup.screen.fill((0,0,0))
