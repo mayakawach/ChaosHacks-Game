@@ -32,7 +32,7 @@ while states.RUNNING:
             if gameLogic.timer.counter == 0:
                 states.RUNNING = False
 
-        dragableSquare.handleInput(event)
+        gameLogic.handleInput(event)
     draw()
 
 pygame.quit()

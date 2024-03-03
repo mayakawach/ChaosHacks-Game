@@ -31,7 +31,7 @@ class Button ():
         else:
             self.text = setup.font.render(self.text_input, True, "white")
 
-button_surface = pygame.image.load("button.png")
+button_surface = pygame.image.load("images/button.png")
 button_surface = pygame. transform.scale(button_surface, (400,150))
 
 button = Button(button_surface, 400, 300, "Start Game")
