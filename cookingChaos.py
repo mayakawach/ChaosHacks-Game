@@ -4,6 +4,7 @@ import gameLogic
 import setup
 import states
 import buttonMenu
+import dragableSquare
 
 def draw():
     setup.bg.blit(setup.screen, (0,0))
@@ -25,10 +26,14 @@ while states.RUNNING:
         if event.type == pygame.QUIT:
             states.RUNNING = False
             break
-        
-        if event.type == pygame.KEYDOWN:
-            if states.current_state == states.State.MAIN_MENU:
-                states.current_state = states.State.GAME
+        elif event.type == gameLogic.timer.timer_event and states.current_state == states.State.GAME:
+            gameLogic.timer.counter -= 1
+            
+            gameLogic.timer.text = gameLogic.timer.font.render(str(gameLogic.timer.counter), True, (0, 128, 0))
+            if gameLogic.timer.counter == 0:
+                states.RUNNING = False
+
+        dragableSquare.handleInput(event)
     draw()
 
 pygame.quit()
