@@ -21,18 +21,29 @@ def draw(t):
         pygame.draw.rect(screen, "red", i.item)
     pygame.display.update()
 
+# def changePos(t) :
+#     t.item.x = random.randint(10, 750)
+#     t.item.y = random.randint(10, 550)
+#     return t
+    
+def randintinrangeX () :
+    return random.randint(10, 750)
+
+def randintinrangeY () :
+    return random.randint(10, 550)
+
 def main() :
     RUNNING = True
 
     # Foods
     random.seed(time.time())
-    j = pygame.Rect(random.randint(10, 750), random.randint(10, 550), 20, 20)
+    j = pygame.Rect(randintinrangeX(), randintinrangeY(), 20, 20)
     jam = NewFood(j, "jam", 2.0)
 
-    p = pygame.Rect(random.randint(10, 750), random.randint(10, 550), 20, 20)
+    p = pygame.Rect(randintinrangeX(), randintinrangeY(), 20, 20)
     peanut = NewFood(p, "peanut", 2.0)
-    
-    b = pygame.Rect(random.randint(10, 750), random.randint(10, 550), 20, 20)
+
+    b = pygame.Rect(randintinrangeX(), randintinrangeY(), 20, 20)
     bread = NewFood(j, "bread", 2.0)
 
     frames = pygame.time.Clock()
@@ -45,6 +56,11 @@ def main() :
                 RUNNING = False
                 break
         
+        # key = pygame.key.get_pressed()
+        # if key[pygame.K_r] :
+        #     for t in foods :
+        #         t = changePos(t)
+    
         draw(foods)
 
     pygame.quit()
