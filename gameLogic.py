@@ -24,7 +24,6 @@ def game():
     pygame.display.update()
     
 def drawGameTitle():
-    setup.screen.fill((0,0,0))
     text = setup.font.render("COOKING CHAOS", True, (255, 255, 255))
     setup.screen.blit(text, (290, 25))
 
@@ -35,11 +34,6 @@ def drawTimer() :
 def drawFood(veg):
     for i in veg:
         pygame.draw.rect(setup.screen, "red", i.shape)
-
-def drawGameTitle():
-    setup.screen.fill((0,0,0))
-    text = setup.font.render("COOKING CHAOS", True, (255, 255, 255))
-    setup.screen.blit(text, (290, 25))
 
 def basket() :
     global totalMoney, totalString
