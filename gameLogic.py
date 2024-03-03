@@ -14,7 +14,6 @@ t = food.Food(tomato, "tomato", 1.00)
 
 def game():
     drawGameTitle()
-    drawBG()
     drawTimer()
     drawFood(veg)
     
