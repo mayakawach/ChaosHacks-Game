@@ -3,6 +3,10 @@ import food
 import setup
 import timer
 
+# create background
+win = pygame.display.set_mode((800, 600))
+bg = pygame.transform.scale(pygame.image.load("sky.jpg"), (0,0))
+
 # Initializing Vegtable List
 tomato = pygame.Rect(100, 150, 20, 20)
 veg = [tomato]
@@ -10,6 +14,7 @@ t = food.Food(tomato, "tomato", 1.00)
 
 def game():
     drawGameTitle()
+    drawBG()
     drawTimer()
     
 def drawGameTitle():
@@ -20,5 +25,5 @@ def drawGameTitle():
 def drawTimer() :
     text_rect = timer.text.get_rect(center = setup.screen.get_rect().center)
     setup.screen.blit(timer.text, text_rect)
-    pygame.display.update()
+
 
